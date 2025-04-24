@@ -1,0 +1,18 @@
+<div class="pokemon-container">
+    <h1>Pokémon Collection</h1>
+    
+    <div *ngIf="loading" class="loading">Loading Pokémon...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+  
+    <div *ngIf="!loading && !error" class="pokemon-grid">
+      <div *ngFor="let p of pokemon" class="pokemon-card">
+        <img [src]="p.sprites.other['official-artwork'].front_default" [alt]="p.name">
+        <h3>{{ p.name | titlecase }}</h3>
+        <div class="types">
+          <span *ngFor="let type of p.types" [class]="'type ' + type.type.name">
+            {{ type.type.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
